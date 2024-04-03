@@ -596,13 +596,7 @@ class Assets
 				}
 				else
 				{
-					// TODO: after Lime 8.2.0 is released, use conditional
-					// compilation to call LimeAssets.removeLibrary(name, false)
-					// since that is a new public API
-					@:privateAccess LimeAssets.libraries.remove(name);
-					_library = new AssetLibrary();
-					_library.__proxy = library;
-					LimeAssets.registerLibrary(name, _library);
+					var unload:Bool = LimeAssets.getLibrary(name) != _library.__proxy;
 				}
 			}
 
